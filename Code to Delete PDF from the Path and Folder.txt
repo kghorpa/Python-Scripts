@@ -1,0 +1,31 @@
+# Delete PDF which are text and has to be removed from the path and folder
+# For MPP1963_06-49-00-01-1-800-801-A  to MPP1963_06-41-00-01-1-800-801-A
+from pdfrw import PdfReader, PdfWriter
+import os
+# list = ["00020","00022","00026","00034"]
+list = ["00007","00018","00020","00022","00026","00034","00039","00044","00045","00050",
+        "00051","00052","00053","00054","00055","00056","00057","00058","00060","00061",
+        "00062","00063","00066","00067","00068","00070","00071","00072","00075","00076",
+        "00077","00078","00079","00082","00084","00088","00094","00098","00100","00104",
+        "00105","00113","00115","00117","00122","00130","00131","00133","00138","00140",
+        "00143","00144","00148","00180","00187","00191","00227","00247","00255"]
+pdf_ends_with = [".pdf_1_16",".pdf_1_13",".pdf_1_14",".pdf_1_28",".pdf_1_8",".pdf_1_17",".pdf_1_9",".pdf_1_24",".pdf_1_13"]
+
+for x in range (len(list)):
+ y = list[x]
+ for a in range(len(pdf_ends_with)):
+  b = pdf_ends_with[a]
+  for parent, dirnames, filenames in os.walk(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF'):
+    # for i in os.listdir(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF'):
+     for i in filenames:
+          if i.lower().endswith(f'{b}.pdf'):
+           os.remove(os.path.join(parent,i))
+
+
+ # for parent, dirnames, filenames in os.walk(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF'):
+ #    # for i in os.listdir(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF'):
+ #     for i in filenames:
+ #         for a in range (len(pdf_ends_with)):
+ #          b = pdf_ends_with[a]
+ #          if i.lower().endswith(f'{b}.pdf'):
+ #           os.remove(os.path.join(parent,i))

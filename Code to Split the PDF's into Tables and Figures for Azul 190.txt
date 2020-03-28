@@ -1,0 +1,165 @@
+## Please run the the code by different MPP3213_06-49-00-01-1-800-801-A.pdf from 41 to 49. Please run 49 first followed by 48, 47 upto 41
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-49-00-01-1-800-801-A [page no (1-14) and page no (14-44)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-49-00-01-1-800-801-A.pdf').pages
+        parts = [(1,14),(14,44)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-49-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-48-00-01-1-800-801-A [page no (1-34) and page no (34-65)
+from pdfrw import PdfReader, PdfWriter
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-48-00-01-1-800-801-A.pdf').pages
+        parts = [(1,34),(34,65)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-48-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-47-00-01-1-800-801-A [page no (1-9) and page no (9-20)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-47-00-01-1-800-801-A.pdf').pages
+        parts = [(1,9),(9,20)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-47-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-46-00-01-1-800-801-A [page no (1-9) and page no (9-20)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-46-00-01-1-800-801-A.pdf').pages
+        parts = [(1,18),(18,37)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-46-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-45-00-01-1-800-801-A [page no (1-10) and page no (10-18)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-45-00-01-1-800-801-A.pdf').pages
+        parts = [(1,10),(10,18)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-45-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-44-00-01-1-800-801-A [page no (1-29) and page no (29-35)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-44-00-01-1-800-801-A.pdf').pages
+        parts = [(1,29),(29,35)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-44-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-43-00-01-1-800-801-A [page no (1-12) and page no (12-16)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-43-00-01-1-800-801-A.pdf').pages
+        parts = [(1,12),(12,16)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-43-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-42-00-01-1-800-801-A [page no (1-13) and page no (13-19)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-42-00-01-1-800-801-A.pdf').pages
+        parts = [(1,13),(13,19)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-42-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])
+
+# Code to Split the PDF's into Tables and Figures for Azul 190
+# For MPP3213_06-41-00-01-1-800-801-A [page no (1-18) and page no (18-32)
+from pdfrw import PdfReader, PdfWriter
+# list = ["00147"]
+list = ["00147","00150","00241","00242","00282","00295","00329","00330","00336"]
+
+for x in range (len(list)):
+    y = list[x]
+    for serial_no in list:
+        pages = PdfReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/MPP3213_06-41-00-01-1-800-801-A.pdf').pages
+        parts = [(1,18),(18,32)]
+        for part in parts:
+         outdata = PdfWriter(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190/{y}/Split PDF/MPP3213_06-41-00-01-1-800-801-A.pdf_{part[0]}_{part[1]}.pdf')
+         for pagenum in range(*part):
+            outdata.addpage(pages[pagenum-1])
+         outdata.write()
+         print(outdata,list[x])

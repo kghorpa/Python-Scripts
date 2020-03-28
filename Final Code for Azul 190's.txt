@@ -1,0 +1,529 @@
+                                                # FOR AZUL 190's#
+
+
+# importing packages and drivers#
+import os.path
+import time
+from selenium import webdriver
+
+#To Change the Default Download Location to the given path as Google Chrome Opens along with Website and Selenium
+chromeOptions = webdriver.ChromeOptions()
+prefs = {"download.default_directory" : r"R:\5) PACKAGE BUILD TOOLS\AMM PANEL DOWNLOADS\AZUL 190"}
+chromeOptions.add_experimental_option("prefs",prefs)
+chromedriver = "C:/Users/KGHORPAD/.wdm/drivers/chromedriver/79.0.3945.36/win32/chromedriver.exe"
+driver = webdriver.Chrome(executable_path=chromedriver, options=chromeOptions)
+os.getcwd()
+
+# Function to Get the Aircraft Deselection and Selection
+def Aircraft_Selection_and_Deselection (driver):
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div[3]/div[1]/div[3]/div/div[1]/button/img').click()
+    time.sleep(2)
+    driver.find_element_by_xpath('/html/body/div[3]/div[1]/div[3]/div/div[1]/div/a[1]').click()
+    time.sleep(10)
+
+#Function to Switch Frame and Selecting to Next Serial No
+def Switch_Frame_and_Child_Frame (driver):
+    # Change Frame To Deselect the Previous Serial No and Select the Next One #
+    var_iframe = driver.find_elements_by_tag_name('iframe')[5]  # find data iframe
+    driver.switch_to.frame(var_iframe)
+
+    # Selecting Frame to Select the Next Serial Number
+    var_iframe = driver.find_elements_by_tag_name('iframe')[0]  # find data iframe
+    driver.switch_to.frame(var_iframe)
+
+#Function to Change Frame, Click on Pop Up Window and Select Dimensions and Areas
+def Change_Frame_and_Select_Dimensions_and_Areas(driver):
+    # # Change Frame and find Print.... Click it #
+    var_iframe = driver.find_elements_by_tag_name('iframe')[4]  # find data iframe
+    driver.switch_to.frame(var_iframe)  # switch to iframe
+
+    driver.find_element_by_xpath("//a[contains(@href,'printManualBatch.do')]").click()
+    time.sleep(2)
+
+    # Change Frame to Click on Pop up Window
+    driver.switch_to.default_content()
+    time.sleep(2)
+
+    # To Select Ch6 Dimmensions and Areas
+    var_iframe = driver.find_elements_by_tag_name('iframe')[5]
+    driver.switch_to.frame(var_iframe)
+
+#Function to Print Files, Get the Window Handle Function and Click on Download Button
+def Print_Files_and_Download_Files(driver):
+    # To Select Print Files
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[6]/a[2]/span').click()
+    time.sleep(150)
+    #time.sleep(20)
+
+    # get the window handle after a new window has opened#
+    window_next = driver.window_handles[2]
+
+    # switch on to new child window#
+    driver.switch_to.window(window_next)
+    time.sleep(6)
+
+    # maximize the child window
+    driver.maximize_window()
+    time.sleep(4)
+
+    # To Click on the Download Button
+    driver.find_element_by_xpath('/html/body/div/div[4]/a[2]/span').click()
+    time.sleep(50)
+    #time.sleep(20)
+
+#Function to Close Window and Switch on to previous window or main page where the print files is present
+def Close_Window_and_Switch_To_Next_Page(driver):
+    # To Close the Child Window
+    driver.find_element_by_xpath('/html/body/div/div[4]/a[1]/span').click()
+    time.sleep(4)
+
+    # switch on to previous window or main page where the print files is present#
+    driver.switch_to.window(window_after)
+    time.sleep(2)
+
+
+def Select_06_Dimensions_and_Areas (driver): #Function to call the CH6 Dimensions and Areas along with Print and Download Option
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/table/tbody/tr/td[2]/span').click()
+    time.sleep(2)
+
+    # 06-49-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[20]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # #06-48-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[19]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # 06-47-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[18]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # 06-46-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[17]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # 06-45-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[16]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # 06-44-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[15]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # 06-43-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[14]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # 06-42-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[13]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+    # 06-41-00/100
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[3]/div/div/div/div[3]/div/div[12]/table/tbody/tr/td[3]/span').click()
+    time.sleep(3)
+    driver.find_element_by_xpath('/html/body/div/div[3]/div[4]/div/ul/li[2]/div/div[1]/span').click()
+    time.sleep(3)
+
+driver.get("https://www.flyembraer.com/irj/portal?NavigationTarget=navurl://b71c9f435db3add739f95f4e2c4bf4b1")
+driver.maximize_window()
+driver.implicitly_wait(10)
+driver.find_element_by_name("Ecom_User_ID").send_keys('')
+driver.find_element_by_name("Ecom_Password").send_keys('')
+driver.find_element_by_xpath('/html/body/table/tbody/tr[1]/td/table/tbody/tr/td/table/tbody/tr[3]/td/table/tbody/tr[4]/td[4]/input').click()
+
+#get the window handle after the window has opened#
+window_before = driver.window_handles[0]
+window_before_title = driver.title
+print('Init: ' + window_before_title)
+
+#open a new window eTechPubs#
+driver.find_element_by_link_text('eTechPubs').click()
+
+#get the window handle after a new window has opened#
+window_after = driver.window_handles[1]
+
+#switch on to new child window#
+driver.switch_to.window(window_after)
+time.sleep(6)
+
+# Change Frame and find Select the Customer along with Type ... Click it #
+var_iframe = driver.find_elements_by_tag_name('iframe')[0] #find data iframe
+driver.switch_to.frame(var_iframe)
+
+# Aircraft Type DropDown
+driver.find_element_by_xpath('/html/body/div/div[1]/form/span[1]/div/select').click()
+time.sleep(2)
+
+#Select Type 190
+driver.find_element_by_xpath('/html/body/div/div[1]/form/span[1]/div/select/option[8]').click()
+time.sleep(2)
+
+#Customer Select DropDown
+driver.find_element_by_xpath('/html/body/div/div[1]/form/span[1]/select').click()
+time.sleep(2)
+
+# Select Customer Azul
+driver.find_element_by_xpath('/html/body/div/div[1]/form/span[1]/select/option[16]').click()
+time.sleep(2)
+
+#Selecting the First Serial No 00147
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[1]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+# Select AMM Part II"
+driver.find_element_by_partial_link_text('AMM Part II').click()
+time.sleep(2)
+
+#driver.switch_to.default_content()
+# Change Frame and find Print.... Click it #
+var_iframe = driver.find_elements_by_tag_name('iframe')[4] #find data iframe
+driver.switch_to.frame(var_iframe) #switch to iframe
+
+driver.find_element_by_xpath("//a[contains(@href,'printManualBatch.do')]").click()
+time.sleep(2)
+
+#Change Frame to Click on Pop up Window
+driver.switch_to.default_content()
+time.sleep(2)
+
+#To Select Ch6 Dimmensions and Areas
+var_iframe = driver.find_elements_by_tag_name('iframe')[5]
+driver.switch_to.frame(var_iframe)
+
+Select_06_Dimensions_and_Areas (driver) #Calling Function to Select Elements 06 of Dimensions and Areas
+
+# To Select Print Files
+driver.find_element_by_xpath('/html/body/div/div[3]/div[6]/a[2]/span').click()
+time.sleep(150)
+#time.sleep(20)
+
+# get the window handle after a new window has opened#
+window_next = driver.window_handles[2]
+
+# switch on to new child window#
+driver.switch_to.window(window_next)
+time.sleep(6)
+
+# maximize the child window
+driver.maximize_window()
+time.sleep(4)
+
+# To Click on the Download Button
+driver.find_element_by_xpath('/html/body/div/div[4]/a[2]/span').click()
+#time.sleep(100)
+time.sleep(50)
+#time.sleep(20)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00147.zip' + ''))
+
+#To Close the Child Window
+driver.find_element_by_xpath('/html/body/div/div[4]/a[1]/span').click()
+time.sleep(4)
+
+#switch on to previous window or main page where the print files is present#
+#use it when it dies because of http error
+driver.switch_to.window(window_after)
+time.sleep(2)
+
+                                            #Azul Airlines 190's Serial No 00150
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00147
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[1]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00150
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[2]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00150.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)
+
+                                            #Azul Airlines 190's Serial No 00241
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00150
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[2]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00241
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[3]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00241.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)
+
+                                            #Azul Airlines 190's Serial No 00242
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00241
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[3]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00242
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[4]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00242.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)
+
+                                            #Azul Airlines 190's Serial No 00282
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00242
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[4]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00282
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[5]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00282.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)
+
+                                            #Azul Airlines 190's Serial No 00295
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00282
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[5]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00295
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[6]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00295.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)
+
+                                            #Azul Airlines 190's Serial No 00329
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00295
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[6]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00329
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[7]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00329.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)
+
+                                            #Azul Airlines 190's Serial No 00330
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00329
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[7]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00330
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[8]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00330.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)
+
+                                            #Azul Airlines 190's Serial No 00336
+
+#Calling Function To Change Aircraft Selection
+Aircraft_Selection_and_Deselection (driver)
+
+#Calling Function to Change Frame To Deselect the Previous Serial No and Select the Next One #
+Switch_Frame_and_Child_Frame(driver)
+
+#DeSelecting the First Serial No 00330
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[8]/td[1]/div/input').click()
+time.sleep(2)
+
+#Select the Next Serail No 00336
+driver.find_element_by_xpath('/html/body/div/div[1]/div/div[3]/div[2]/div[2]/div[3]/table/tbody[2]/tr[9]/td[1]/div/input').click()
+time.sleep(2)
+
+# To Confirm the Selected Serial No
+driver.find_element_by_id("btnApply").click()
+time.sleep(7)
+
+#Call Funtion to Change Frame and Find Print To Click it#
+Change_Frame_and_Select_Dimensions_and_Areas(driver)
+
+#Calling Function to Select Elements 06 of Dimensions and Areas
+Select_06_Dimensions_and_Areas (driver)
+
+#Calling Functions to Select Print Files, Handle Window Function and Selecting the Download Button
+Print_Files_and_Download_Files(driver)
+
+#Rename the Manuals zipped folder based on the Airlines and Serial No
+os.rename(os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Manuals.zip'),
+          os.path.join('R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/AZUL 190','Azul Serial No 00336.zip' + ''))
+
+Close_Window_and_Switch_To_Next_Page(driver)

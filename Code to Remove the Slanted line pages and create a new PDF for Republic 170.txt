@@ -1,0 +1,69 @@
+# Convert PDF into Images using Wand, Select one PDF by on PDF, remove the slanted line pages and create a new PDF for Republic 170
+
+from wand.image import Image as Img
+from pdfrw import PdfReader, PdfWriter
+import os
+from PyPDF2 import PdfFileWriter, PdfFileReader
+import os
+from pdfrw import PdfReader, PdfWriter
+from PIL import Image
+import imagesize
+import cv2
+import numpy as np
+
+#Create an array for list of all folders
+# list = ["00007","00018"]
+list = ["00007","00018","00020","00022","00026","00034","00039","00044","00045","00050",
+        "00051","00052","00053","00054","00055","00056","00057","00058","00060","00061",
+        "00062","00063","00066","00067","00068","00070","00071","00072","00075","00076",
+        "00077","00078","00079","00082","00084","00088","00094","00098","00100","00104",
+        "00105","00113","00115","00117","00122","00130","00131","00133","00138","00140",
+        "00143","00144","00148","00180","00187","00191","00227","00247","00255"]
+
+#Create list of array for the pdf files
+# pdf_file = ["MPP1963_06-41-00-01-1-800-801-A.pdf_16_30","MPP1963_06-42-00-01-1-800-801-A.pdf_13_21","MPP1963_06-43-00-01-1-800-801-A.pdf_14_26","MPP1963_06-44-00-01-1-800-801-A.pdf_28_34","MPP1963_06-45-00-01-1-800-801-A.pdf_8_14","MPP1963_06-46-00-01-1-800-801-A.pdf_17_36","MPP1963_06-47-00-01-1-800-801-A.pdf_9_19","MPP1963_06-48-00-01-1-800-801-A.pdf_24_57","MPP1963_06-49-00-01-1-800-801-A.pdf_13_41"]
+pdf_file = ["MPP1963_06-48-00-01-1-800-801-A.pdf_24_57"]
+# pdf_ends_with = [".pdf_16_30",".pdf_13_21",".pdf_14_26",".pdf_28_34",".pdf_8_14",".pdf_17_36",".pdf_9_19",".pdf_24_57",".pdf_13_41"]
+
+#Create list of array for all the images
+image_list = ["image_name-0","image_name-1","image_name-2","image_name-3","image_name-4","image_name-5","image_name-6","image_name-7","image_name-8","image_name-9","image_name-10","image_name-11","image_name-12","image_name-13","image_name-14","image_name-15","image_name-16","image_name-17","image_name-18","image_name-19","image_name-20","image_name-21","image_name-22","image_name-23","image_name-24","image_name-25","image_name-26","image_name-27","image_name-28","image_name-29","image_name-30","image_name-31","image_name-32","image_name-33","image_name-34","image_name-35","image_name-36"]
+
+#image_list_1 = ["image_name-0","image_name-1","image_name-2","image_name-3","image_name-4","image_name-5","image_name-6","image_name-7","image_name-8","image_name-9","image_name-10","image_name-11","image_name-12","image_name-13","image_name-14","image_name-15","image_name-16","image_name-17","image_name-18","image_name-19","image_name-20","image_name-21","image_name-22","image_name-23","image_name-24","image_name-25","image_name-26","image_name-27","image_name-28","image_name-29","image_name-30","image_name-31","image_name-32"]
+
+# Read the list of folders array and find pdf to convert to Images
+for x in range (len(list)):
+    y = list[x]
+    # Read the Pdf from the selected folder
+    for a in range(len(pdf_file)):
+        b = pdf_file[a]
+        # Convert pages of pdf file to images using wand
+        with Img(filename=f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF/{b}.pdf', resolution=500) as img:
+         img.compression_quality = 99
+         img.save(filename=f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF/image_name.jpg')
+         infile = PdfFileReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF/{b}.pdf','rb')
+
+    # To save the new Pdf file after removing the slanted line pages
+    output = PdfFileWriter()
+    print(output, list[x],'Serial Number', pdf_file[a],'Completed')
+    print(infile.getNumPages(),'Pages scanned')
+
+    # To scan 1st page of pdf with 1st image and so on till the last page of pdf to last image
+    for i in range(infile.getNumPages()):
+        cur_page = infile.getPage(i)
+
+        # To compare size of each image and when size is less than the mentioned size in bytes, keep the page and delete others
+        c = os.path.getsize(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF/{image_list[i]}.jpg')
+        if c < int('4391232'):
+            output.addPage(cur_page)
+
+            #Save the converted Pdf to this path
+    with open(f"R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF/Final PDF/{b}.pdf",'wb') as fh:
+        output.write(fh)
+
+    #The images after the process are done, needs to be deleted
+    for parent, dirnames, filenames in os.walk(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF'):
+        for l in filenames:
+            for j in range (len(image_list)):
+                k = image_list[j]
+                if l.lower().endswith(f'{k}.jpg'):
+                    os.remove(os.path.join(parent,l))

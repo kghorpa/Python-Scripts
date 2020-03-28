@@ -1,0 +1,4 @@
+from wand.image import Image as Img
+with Img(filename='R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 175/00156/Split PDF/MPP1963_06-42-00-01-1-800-801-A.pdf_13_20.pdf', resolution=500) as img:
+     img.compression_quality = 99
+     img.save(filename='R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 175/00156/Split PDF/image_name.jpg')

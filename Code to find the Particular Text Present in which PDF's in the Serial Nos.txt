@@ -1,0 +1,103 @@
+#Code to find the ON ACFT Present in which PDF's in the Serial Nos
+
+# import packages
+import PyPDF2
+import re
+
+# #Create an array for list of all folders
+list = ["00007"]
+# list = ["00007","00018","00020","00022","00026","00034","00039","00044","00045","00050",
+#         "00051","00052","00053","00054","00055","00056","00057","00058","00060","00061",
+#         "00062","00063","00066","00067","00068","00070","00071","00072","00075","00076",
+#         "00077","00078","00079","00082","00084","00088","00094","00098","00100","00104",
+#         "00105","00113","00115","00117","00122","00130","00131","00133","00138","00140",
+#         "00143","00144","00148","00180","00187","00191","00227","00247","00255"]
+
+# #Create list of array for the pdf files
+pdf_file = ["MPP1963_06-41-00-01-1-800-801-A.pdf_16_30","MPP1963_06-42-00-01-1-800-801-A.pdf_13_21","MPP1963_06-43-00-01-1-800-801-A.pdf_14_26","MPP1963_06-44-00-01-1-800-801-A.pdf_28_34","MPP1963_06-45-00-01-1-800-801-A.pdf_8_14","MPP1963_06-46-00-01-1-800-801-A.pdf_17_36","MPP1963_06-47-00-01-1-800-801-A.pdf_9_19","MPP1963_06-48-00-01-1-800-801-A.pdf_24_57","MPP1963_06-49-00-01-1-800-801-A.pdf_13_41"]
+# pdf_file = ["MPP1963_06-41-00-01-1-800-801-A.pdf_16_30","MPP1963_06-42-00-01-1-800-801-A.pdf_13_21","MPP1963_06-43-00-01-1-800-801-A.pdf_14_26","MPP1963_06-44-00-01-1-800-801-A.pdf_28_34","MPP1963_06-45-00-01-1-800-801-A.pdf_8_14","MPP1963_06-46-00-01-1-800-801-A.pdf_17_36","MPP1963_06-47-00-01-1-800-801-A.pdf_9_19","MPP1963_06-48-00-01-1-800-801-A.pdf_24_57","MPP1963_06-49-00-01-1-800-801-A.pdf_13_41"]
+
+# Read the list of folders array and find the pdf to check the text
+for x in range (len(list)):
+    y = list[x]
+
+    for a in range (len(pdf_file)):
+        b = pdf_file[a]
+
+        # open the pdf file
+        object = PyPDF2.PdfFileReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF/Final PDF/{b}.pdf')
+
+        # get number of pages
+        NumPages = object.getNumPages()
+
+        # define keyterms
+        String = "ON ACFT"
+
+        # extract text and do the search
+        for i in range(0, NumPages):
+            PageObj = object.getPage(i)
+            Text = PageObj.extractText()
+            ResSearch = re.search(String, Text)
+            if String in Text:
+                print('\n')
+                print('Serial No',list[x])
+                print(pdf_file[a])
+                print("PG N is " + str(i+1))
+                print(ResSearch)
+            # print(Text)
+            # if String in Text:
+
+
+
+
+
+
+
+#Code to find the ON ACFT Text Present in which PDF's in the Serial Nos
+
+# import packages
+import PyPDF2
+import re
+
+# #Create an array for list of all folders
+list = ["00007","00018"]
+# list = ["00007","00018","00020","00022","00026","00034","00039","00044","00045","00050",
+#         "00051","00052","00053","00054","00055","00056","00057","00058","00060","00061",
+#         "00062","00063","00066","00067","00068","00070","00071","00072","00075","00076",
+#         "00077","00078","00079","00082","00084","00088","00094","00098","00100","00104",
+#         "00105","00113","00115","00117","00122","00130","00131","00133","00138","00140",
+#         "00143","00144","00148","00180","00187","00191","00227","00247","00255"]
+
+# #Create list of array for the pdf files
+pdf_file = ["MPP1963_06-41-00-01-1-800-801-A.pdf_16_30","MPP1963_06-42-00-01-1-800-801-A.pdf_13_21","MPP1963_06-43-00-01-1-800-801-A.pdf_14_26","MPP1963_06-44-00-01-1-800-801-A.pdf_28_34","MPP1963_06-45-00-01-1-800-801-A.pdf_8_14","MPP1963_06-46-00-01-1-800-801-A.pdf_17_36","MPP1963_06-47-00-01-1-800-801-A.pdf_9_19","MPP1963_06-48-00-01-1-800-801-A.pdf_24_57","MPP1963_06-49-00-01-1-800-801-A.pdf_13_41"]
+# pdf_file = ["MPP1963_06-41-00-01-1-800-801-A.pdf_16_30","MPP1963_06-42-00-01-1-800-801-A.pdf_13_21","MPP1963_06-43-00-01-1-800-801-A.pdf_14_26","MPP1963_06-44-00-01-1-800-801-A.pdf_28_34","MPP1963_06-45-00-01-1-800-801-A.pdf_8_14","MPP1963_06-46-00-01-1-800-801-A.pdf_17_36","MPP1963_06-47-00-01-1-800-801-A.pdf_9_19","MPP1963_06-48-00-01-1-800-801-A.pdf_24_57","MPP1963_06-49-00-01-1-800-801-A.pdf_13_41"]
+
+# Read the list of folders array and find the pdf to check the text
+for x in range (len(list)):
+    y = list[x]
+
+    for a in range (len(pdf_file)):
+        b = pdf_file[a]
+
+        # open the pdf file
+        object = PyPDF2.PdfFileReader(f'R:/5) PACKAGE BUILD TOOLS/AMM PANEL DOWNLOADS/REPUBLIC 170/{y}/Split PDF/Final PDF/{b}.pdf')
+
+        # get number of pages
+        NumPages = object.getNumPages()
+
+        # define keyterms
+        String = "ON ACFT"
+
+        # extract text and do the search
+        for i in range(0, NumPages):
+            PageObj = object.getPage(i)
+            print('\n')
+            print('Scanning in Serial No',list[x])
+            print('Scanning PDF is',pdf_file[a])
+            print("Scanned page no is " + str(i))
+            Text = PageObj.extractText()
+           # print(Text)
+            ResSearch = re.search(String, Text)
+            print(ResSearch)
+
+
